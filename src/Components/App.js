@@ -1,0 +1,18 @@
+import { connect } from "react-redux";
+import Main from "./Main";
+import { bindActionCreators } from "redux";
+import * as actions from "../redux/actions";
+import { withRouter } from "react-router";
+
+function mapStateToProps(state) {
+  return {
+    movies: state.moviesReducer,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(actions, dispatch);
+}
+
+const App = withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));
+export default App;
